@@ -1,0 +1,46 @@
+services:
+  gg4uno:
+    image: node:latest
+    container_name: gg4uno
+    hostname: gg4uno
+    ports:
+      - 3900:3000
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    depends_on:
+      - gg4uno_db
+    restart: always
+    entrypoint: su -c "npm install && npx knex migrate:latest && npm run start"
+
+  gg4uno_db:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: database
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: password
+    volumes:
+      - gg4uno_db:/var/lib/mysql
+    # ports:
+    #   - "30306:3306"
+    container_name: gg4uno_db
+    restart: always
+
+  # gg4uno_phpmyadmin:
+  #   image: phpmyadmin
+  #   restart: always
+  #   ports:
+  #     - 8080:80
+  #   environment:
+  #     - PMA_HOST=gg4uno_db
+  #     - PMA_USER=root
+  #     - PMA_PASSWORD=password
+  #     - MYSQL_ROOT_PASSWORD=password
+  #   container_name: gg4uno_phpmyadmin
+  #   depends_on:
+  #     - gg4uno_db
+
+volumes:
+  gg4uno_db:
+    driver: local
