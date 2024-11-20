@@ -2,8 +2,10 @@ const express = require("express");
 const indexRoute = require("./routes/indexRoute");
 const shortRoute = require("./routes/shortRoute");
 const statisticRoute = require("./routes/statisticRoute");
+const path = require("path");
 const app = express();
 
+app.use(express.static(path.join(__dirname, "src")));
 app.set("view engine", "ejs");
 
 app.use("/", indexRoute);
