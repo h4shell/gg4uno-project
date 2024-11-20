@@ -89,6 +89,15 @@
         z-index: -1;
         opacity: 0.6;
     }
+
+    nav a {
+        display: block;
+        width: fit-content;
+    }
+
+    nav a p {
+        font-weight: 900;
+    }
 </style>
 
 <body class="bg-primary text-white overflow-hidden">
@@ -200,15 +209,17 @@
     </div>
     <nav class="pt-6 pl-2">
         <a href="/">
-            <h1 class="text-4xl">gg4.uno</h1>
+            <p class="text-4xl gradient">gg4.uno</p>
         </a>
     </nav>
     <div id="root" class="min-width">
         <section id="header" class="pt-20 mt-[20%]">
-            <h2 class="gradient text-center md:text-6xl pb-2 text-4xl px-8 font-bold">Shorten Your<br>Loooong Links :)
-            </h2>
+            <h1 class="gradient text-center md:text-6xl pb-2 text-4xl px-8 font-bold">Shorten Your<br>Long
+                Links :)
+            </h1>
             <p class="text-center pt-6 opacity-70 max-w-md mx-auto">
-                gg4.uno is an efficient and easy-to-use URL shortening service that streamlines your online experience.
+                gg4.uno is an efficient and easy-to-use URL shortening service that streamlines your online
+                experience.
             </p>
             <div class="container relative mx-auto max-w-3xl">
                 <input type="text" placeholder="Enter the link here"
@@ -247,19 +258,21 @@
             latBar.classList.toggle("w-[300px]");
         }
         function makeUrl() {
-            const input64 = btoa(input.value);
-            fetch(`/short/${input64}`)
-                .then((response) => response.json())
-                .then((text) => {
-                    if (text.error) {
-                        const boxError = document.querySelector("#box-error");
-                        boxError.classList.remove("hide");
-                        input.value = "";
-                    } else {
-                        const urlShort = `${window.location.origin}/statistic/${text.code}`;
-                        window.location.href = urlShort;
-                    }
-                });
+            if (input.value) {
+                const input64 = btoa(input.value);
+                fetch(`/short/${input64}`)
+                    .then((response) => response.json())
+                    .then((text) => {
+                        if (text.error) {
+                            const boxError = document.querySelector("#box-error");
+                            boxError.classList.remove("hide");
+                            input.value = "";
+                        } else {
+                            const urlShort = `${window.location.origin}/statistic/${text.code}`;
+                            window.location.href = urlShort;
+                        }
+                    });
+            }
         }
 
         input.addEventListener("keydown", function (event) {
