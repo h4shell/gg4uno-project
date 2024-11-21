@@ -45,7 +45,7 @@ input {
 }
 
 #bg {
-    background: url('/public/images/bg.png');
+    background: url('/public/images/bg.webp');
     position: fixed;
     background-repeat: no-repeat;
     left: 50%;
