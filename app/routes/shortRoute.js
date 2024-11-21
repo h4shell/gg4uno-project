@@ -4,10 +4,9 @@ const linkModel = require("../models/linkModel");
 const genCode = require("../modules/genCode");
 const checkUrl = require("../modules/checkUrl");
 
-router.get("/short/:url", async (req, res) => {
+router.post("/short", async (req, res) => {
+  const url = req.body.url;
   try {
-    const url = atob(req.params.url);
-
     const urlChecked = await checkUrl(url);
 
     if (urlChecked) {
@@ -17,10 +16,11 @@ router.get("/short/:url", async (req, res) => {
         url: urlChecked,
       };
       const response = await linkModel.addLink(link);
+      console.log(response);
       if (response) {
         res.json({ code: code });
       } else {
-        res.send("Link non trovato");
+        res.send("Error");
       }
     } else {
       res.json({ error: true });
@@ -31,4 +31,3 @@ router.get("/short/:url", async (req, res) => {
 });
 
 module.exports = router;
-//aHR0cHM6Ly9nb29nbGUuaXQ=

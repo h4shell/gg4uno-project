@@ -259,9 +259,24 @@
             latBar.classList.toggle("w-[300px]");
         }
         function makeUrl() {
+
+            const data = {
+                url: input.value
+            }
+
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }
+
+
+
             if (input.value) {
-                const input64 = btoa(input.value);
-                fetch(`/short/${input64}`)
+
+                fetch('/short', options)
                     .then((response) => response.json())
                     .then((text) => {
                         if (text.error) {

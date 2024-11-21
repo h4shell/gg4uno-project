@@ -6,8 +6,8 @@
 exports.up = function (knex) {
   return knex.schema.createTable("link", (table) => {
     table.increments("id").primary();
-    table.string("code").notNullable().unique();
-    table.string("url").notNullable();
+    table.string("code", 15).notNullable().unique();
+    table.text("url").notNullable();
     table.integer("clicks").notNullable().defaultTo(0);
     table.timestamps(true, true);
   });
