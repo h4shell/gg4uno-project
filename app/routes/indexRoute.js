@@ -2,10 +2,14 @@ const express = require("express");
 const router = express.Router();
 const linkModel = require("../models/linkModel");
 
-router.get("/:code", async (req, res) => {
-  const result = await linkModel.getLink(req.params.code);
+router.get("/:code*", async (req, res) => {
+  let code = req.params.code;
+  if (code.includes("@")) {
+    code = code.split("@")[0];
+  }
+  const result = await linkModel.getLink(code);
   if (result) {
-    await linkModel.addClick(req.params.code);
+    await linkModel.addClick(code);
     res.redirect(result.url);
   } else {
     res.redirect("/");
