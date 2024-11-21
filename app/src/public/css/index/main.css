@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    transition: all .2s ease-in-out
+}
+
+.bg-primary {
+    background: #0B101B;
+}
+
+.min-width {
+    width: min(1100px, 100% - 2rem);
+    margin-inline: auto;
+}
+
+.bg-input {
+    background: #181E29;
+}
+
+h1 {
+    background: linear-gradient(89.92deg, #144EE3 0, #EB568E 8.86%, #A353AA 64.49%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    font-weight: 900 !important;
+}
+
+.gradient {
+    background: linear-gradient(89.92deg, #144EE3 -0.02%, #EB568E 18.86%, #A353AA 64.49%, #144EE3 100.67%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+input {
+    border: 3px solid #353C4A
+}
+
+#bg {
+    background: url('/public/images/bg.png');
+    position: fixed;
+    background-repeat: no-repeat;
+    left: 50%;
+
+    inset: 0;
+    transform: translateX(10%);
+    z-index: -1;
+    opacity: 0.6;
+}
+
+nav a {
+    display: block;
+    width: fit-content;
+}
+
+nav a p {
+    font-weight: 900;
+}

@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    transition: all .2s ease-in-out
+}
+
+
+h1 {
+    background: linear-gradient(89.92deg, #144EE3 0, #EB568E 8.86%, #A353AA 64.49%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    font-weight: 900 !important;
+}
+
+.gradient {
+    background: linear-gradient(89.92deg, #144EE3 -0.02%, #EB568E 18.86%, #A353AA 64.49%, #144EE3 100.67%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.bg-primary {
+    background: #0B101B;
+}
+
+.min-width {
+    width: min(1100px, 100% - 2rem);
+    margin-inline: auto;
+}
+
+.bg-input {
+    background: #181E29;
+}
